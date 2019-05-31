@@ -1,0 +1,18 @@
+{
+    "presets": [
+      "next/babel"
+    ],
+
+    "plugins": [
+      ["module-resolver", {
+        "alias": {
+          "@containers": "./containers",
+          "@store": "./store",
+          "@storeAction":"./store/storeAction",
+          "@components":"./components",
+        }
+      }],
+      ["@babel/plugin-proposal-decorators", { "legacy": true }],
+      ["@babel/plugin-proposal-class-properties", { "loose": true }]
+    ]
+  }
