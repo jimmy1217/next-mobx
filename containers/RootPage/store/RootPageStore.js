@@ -2,22 +2,16 @@ import storeAction from "@storeAction";
 import { action, extendObservable } from "mobx";
 
 const initState = {
-  name: "no name"
+  isFetching: false,
+  didInvalidate: true,
+  list: []
 };
 
 export default class RootPageStore extends storeAction {
-  constructor({ ctx, initialData }) {
-    super();
+  constructor(props) {
+    super(props);
+    Object.assign(initState, this.serverState);
     this.initState = initState;
-    if (!!process.browser) {
-      this.rootStore = ctx;
-      const mobxStoreState = { ...initialData.RootPageStore };
-      delete mobxStoreState.initState;
-      Object.assign(initState, mobxStoreState);
-    }
     extendObservable(this, initState);
   }
-  @action test = () => {
-    console.log("hello");
-  };
 }

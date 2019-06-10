@@ -10,6 +10,7 @@
           "@store": "./store",
           "@storeAction":"./store/storeAction",
           "@components":"./components",
+          "@api":"./api",
         }
       }],
       ["@babel/plugin-proposal-decorators", { "legacy": true }],
