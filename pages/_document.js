@@ -13,7 +13,7 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
-          <title>Next Mobx</title>
+          {/* <title>Next Mobx</title> */}
           {this.props.styleTags}
         </Head>
         <body>
