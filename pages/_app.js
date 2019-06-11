@@ -2,7 +2,7 @@ import App, { Container } from "next/app";
 import React from "react";
 import { initializeStore } from "@store/store";
 import { Provider } from "mobx-react";
-import Head from 'next/head'
+import Head from "next/head";
 
 class MyMobxApp extends App {
   static async getInitialProps(appContext) {
