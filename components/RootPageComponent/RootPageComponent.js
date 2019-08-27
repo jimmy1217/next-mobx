@@ -15,6 +15,7 @@ const Card = styled.div`
   justify-content:center;
   box-shadow:0 0px 3px 0 #ddd;
   margin:20px;
+  color:#ddd;
 `;
 
 const Reset = styled.button`
