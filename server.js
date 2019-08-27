@@ -23,8 +23,8 @@ app.prepare()
     .then(() => {
         const server = express();
 
+        /** --------- with cache start --------- */
         server.get('/_next/*', (req, res) => {
-            /* serving _next static content using next.js handler */
             handle(req, res);
         });
 
@@ -32,6 +32,11 @@ app.prepare()
             /* serving page */
             return renderAndCache(req, res)
         });
+        /** --------- with cache end ------------ */
+
+        // server.get('*', (req, res) => {
+		// 	return handle(req, res)
+		// })
 
         /* starting server */
         server.listen(port, (err) => {
@@ -53,14 +58,14 @@ async function renderAndCache(req, res) {
 
     // If we have a page in the cache, let's serve it
     if (ssrCache.has(key)) {
-        //console.log(`serving from cache ${key}`);
+        console.log(`serving from cache ${key}`);
         res.setHeader('x-cache', 'HIT');
         res.send(ssrCache.get(key));
         return
     }
 
     try {
-        //console.log(`key ${key} not found, rendering`);
+        console.log(`key ${key} not found, rendering`);
         // If not let's render the page into HTML
         const html = await app.renderToHTML(req, res, req.path, req.query);
 

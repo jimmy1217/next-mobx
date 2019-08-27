@@ -3,6 +3,15 @@ import React from "react";
 import { initializeStore } from "@store/store";
 import { Provider } from "mobx-react";
 import Head from "next/head";
+import { createGlobalStyle } from "styled-components";
+import { normalize } from "styled-normalize";
+
+const GlobalStyle = createGlobalStyle`
+  ${normalize}
+  body {
+    background-color: rgb(43, 40, 50);
+  }
+`;
 
 class MyMobxApp extends App {
   static async getInitialProps(appContext) {
@@ -31,6 +40,7 @@ class MyMobxApp extends App {
         <Head>
           <title>next Mobx</title>
         </Head>
+        <GlobalStyle />
         <Provider store={this.mobxStore}>
           <Component {...pageProps} />
         </Provider>

@@ -1,13 +1,5 @@
 import Document, { Head, Main, NextScript } from "next/document";
-import { ServerStyleSheet, createGlobalStyle } from "styled-components";
-import { normalize } from "styled-normalize";
-
-const GlobalStyle = createGlobalStyle`
-  ${normalize}
-  body {
-    background-color: rgb(43, 40, 50);
-  }
-`;
+import { ServerStyleSheet } from "styled-components";
 
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
@@ -24,7 +16,6 @@ export default class MyDocument extends Document {
       <html>
         <Head>{this.props.styleTags}</Head>
         <body>
-          <GlobalStyle />
           <Main />
           <NextScript />
         </body>
