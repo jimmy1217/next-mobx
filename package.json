@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "node -r dotenv/config server.js dotenv_config_path=./.env"
+    "start": "next start",
+    "_start": "node -r dotenv/config server.js dotenv_config_path=./.env"
   },
   "repository": {
     "type": "git",
