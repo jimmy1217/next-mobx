@@ -7,7 +7,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "_start": "node -r dotenv/config server.js dotenv_config_path=./.env"
+    "_start": "node -r dotenv/config server.js dotenv_config_path=./env/.env"
   },
   "repository": {
     "type": "git",

@@ -13,11 +13,11 @@
       ],
       ["module-resolver", {
         "alias": {
-          "@containers": "./containers",
-          "@store": "./store",
-          "@storeAction":"./store/storeAction",
-          "@components":"./components",
-          "@api":"./api",
+          "@containers": "./src/containers",
+          "@store": "./src/store",
+          "@storeAction":"./src/store/storeAction",
+          "@components":"./src/components",
+          "@api":"./src/api",
         }
       }],
       ["@babel/plugin-proposal-decorators", { "legacy": true }],
