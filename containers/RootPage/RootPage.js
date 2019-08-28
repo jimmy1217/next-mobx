@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import RootPageComponent from "@components/RootPageComponent";
+import RootPageComponent from "./components/RootPageComponent";
 import { callGetUser } from "@api";
 
 class RootPage extends Component {
