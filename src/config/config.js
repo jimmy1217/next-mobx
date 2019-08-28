@@ -1,2 +1,2 @@
 import { configure } from "mobx";
-configure({ enforceActions: true });
+configure({ enforceActions: "observed" });
