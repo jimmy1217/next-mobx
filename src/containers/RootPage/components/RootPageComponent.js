@@ -37,7 +37,7 @@ const RootPage = ({ store }) => {
   const morph = useMorph();
   return (
     <Contain>
-      {toggle && (
+      {!toggle && (
         <div {...morph}>
           <Reset
             onClick={() => {
@@ -49,7 +49,7 @@ const RootPage = ({ store }) => {
         </div>
       )}
 
-      {!toggle && (
+      {toggle && (
         <div {...morph}>
           {list.map(item => (
             <Card key={item.id}>
