@@ -1,5 +1,11 @@
+import React from 'react';
 import { action, observable } from "mobx";
-import { useStaticRendering } from "mobx-react";
+import { useStaticRendering, MobXProviderContext } from "mobx-react";
+
+/** 拿來取代 inject */
+export function useStores() {
+  return React.useContext(MobXProviderContext)
+}
 
 const isServer = !process.browser;
 useStaticRendering(isServer);

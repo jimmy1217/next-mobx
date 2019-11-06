@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { inject } from "mobx-react";
-import { observer } from "mobx-react-lite";
+import { observer } from "mobx-react";
 import styled from "styled-components";
 import { useMorph } from "react-morph";
+import { useStores } from "@store/store"
 
 const Contain = styled.div`
   display: flex;
@@ -30,8 +30,16 @@ const Reset = styled.div`
   background-color: transparent;
 `;
 
+function useRootPageData() {
+  const { store } = useStores();
+  const { reset, list } = store.RootPageStore
+  return {
+    reset, list
+  }
+}
+
 const RootPage = ({ store }) => {
-  const { reset, list } = store.RootPageStore;
+  const { reset, list } = useRootPageData();
   const [toggle, setToggle] = useState(true);
 
   const morph = useMorph();
@@ -69,4 +77,4 @@ const RootPage = ({ store }) => {
   );
 };
 
-export default inject("store")(observer(RootPage));
+export default observer(RootPage);
