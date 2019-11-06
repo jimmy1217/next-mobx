@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { observer } from "mobx-react";
+import { observer, Observer, useLocalStore } from "mobx-react";
 import styled from "styled-components";
 import { useMorph } from "react-morph";
 import { useStores } from "@store/store"
@@ -30,16 +30,16 @@ const Reset = styled.div`
   background-color: transparent;
 `;
 
-function useRootPageData() {
-  const { store } = useStores();
-  return {
-    list: store.RootPageStore.list
-  }
+
+const DontRenderComponent = () => {
+  console.log('render')
+  return <div>no~~~~</div>
 }
 
 const RootPage = () => {
-  const { list } = useRootPageData();
   const [toggle, setToggle] = useState(true);
+  const [count, setCount] = useState(0);
+  const store = useLocalStore(() => ({ mobxCount: 0 }))
 
   useEffect(() => {
     console.log('component did mount')
@@ -49,8 +49,15 @@ const RootPage = () => {
   }, []);
 
   const morph = useMorph();
+  const RootPageStore = useStores().store.RootPageStore;
+  const { list } = RootPageStore;
   return (
     <Contain>
+      {count}
+      <div onClick={() => setCount(count + 1)}>add count from state</div>
+      <Observer>{() => store.mobxCount}</Observer>
+      <div onClick={() => { store.mobxCount = store.mobxCount + 1 }}>add count from mobx</div>
+      <DontRenderComponent />
       {!toggle && (
         <div {...morph}>
           <Reset
@@ -80,7 +87,7 @@ const RootPage = () => {
         </div>
       )}
     </Contain>
-  );
+  )
 };
 
 export default observer(RootPage);

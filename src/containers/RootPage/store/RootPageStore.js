@@ -4,6 +4,7 @@ import { action, extendObservable } from "mobx";
 const initState = {
   isFetching: false,
   didInvalidate: true,
+  mobxCount: 0,
   list: []
 };
 
@@ -13,5 +14,8 @@ export default class RootPageStore extends storeAction {
     Object.assign(initState, this.serverState);
     this.initState = initState;
     extendObservable(this, initState);
+  }
+  @action addCount = () => {
+    this.assignData({ mobxCount: this.mobxCount + 1 })
   }
 }
