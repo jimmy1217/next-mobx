@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { observer } from "mobx-react";
 import styled from "styled-components";
 import { useMorph } from "react-morph";
@@ -32,15 +32,21 @@ const Reset = styled.div`
 
 function useRootPageData() {
   const { store } = useStores();
-  const { reset, list } = store.RootPageStore
   return {
-    reset, list
+    list: store.RootPageStore.list
   }
 }
 
-const RootPage = ({ store }) => {
-  const { reset, list } = useRootPageData();
+const RootPage = () => {
+  const { list } = useRootPageData();
   const [toggle, setToggle] = useState(true);
+
+  useEffect(() => {
+    console.log('component did mount')
+    return () => {
+      console.log('component will unmount')
+    };
+  }, []);
 
   const morph = useMorph();
   return (
