@@ -17,11 +17,7 @@ class Store {
   constructor(isServer, initialData = {}) {
     const ctx = isServer ? {} : this;
     this.isServer = isServer;
-    this.RootPageStore = new RootPageStore({
-      ctx,
-      initialData,
-      storeName: "RootPageStore"
-    });
+    this.RootPageStore = new RootPageStore({ ctx, initialData, storeName: "RootPageStore" });
   }
 }
 
