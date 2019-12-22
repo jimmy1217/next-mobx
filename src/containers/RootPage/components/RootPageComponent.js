@@ -54,10 +54,6 @@ const RootPage = () => {
   return (
     <Contain>
       {count}
-      <div onClick={() => setCount(count + 1)}>add count from state</div>
-      <Observer>{() => store.mobxCount}</Observer>
-      <div onClick={() => { store.mobxCount = store.mobxCount + 1 }}>add count from mobx</div>
-      <DontRenderComponent />
       {!toggle && (
         <div {...morph}>
           <Reset
