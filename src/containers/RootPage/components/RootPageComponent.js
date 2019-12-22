@@ -31,15 +31,8 @@ const Reset = styled.div`
 `;
 
 
-const DontRenderComponent = () => {
-  console.log('render')
-  return <div>no~~~~</div>
-}
-
 const RootPage = () => {
   const [toggle, setToggle] = useState(true);
-  const [count, setCount] = useState(0);
-  const store = useLocalStore(() => ({ mobxCount: 0 }))
 
   useEffect(() => {
     console.log('component did mount')
