@@ -12,7 +12,6 @@ export default class RootPageStore extends storeAction {
   constructor(props) {
     super(props);
     this.initState = this.returnCombineState(props, initState);
-    console.log(this.initState)
     extendObservable(this, this.initState);
   }
 }
