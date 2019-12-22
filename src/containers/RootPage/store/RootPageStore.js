@@ -11,11 +11,8 @@ const initState = {
 export default class RootPageStore extends storeAction {
   constructor(props) {
     super(props);
-    Object.assign(initState, this.serverState);
-    this.initState = initState;
-    extendObservable(this, initState);
-  }
-  @action addCount = () => {
-    this.assignData({ mobxCount: this.mobxCount + 1 })
+    this.initState = this.returnCombineState(props, initState);
+    console.log(this.initState)
+    extendObservable(this, this.initState);
   }
 }

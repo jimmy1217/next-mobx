@@ -2,14 +2,15 @@ import { action, extendObservable, computed } from "mobx";
 
 /** 共用的 store action */
 export default class storeAction {
-  constructor({ ctx, initialData, storeName }) {
+  constructor(props) {
     this.initState = {};
-    /** 此處處理初始化時,非同步項目的初始化狀態 */
-    if (!!process.browser) {
-      const serverState = { ...initialData[storeName] };
-      delete serverState.initState;
-      this.serverState = serverState;
-    }
+  }
+
+  @action returnCombineState = (props, initState) => {
+    const { isServer, initialData } = props;
+    const combineClientServerState = isServer ? initState : { ...initState, ...initialData };
+    delete combineClientServerState.initState;
+    return combineClientServerState
   }
 
   /** action - 多項改變  */

@@ -1,6 +1,6 @@
 import React from 'react';
-import { action, observable } from "mobx";
 import { useStaticRendering, MobXProviderContext } from "mobx-react";
+import allStore from './allStore'
 
 /** 拿來取代 inject */
 export function useStores() {
@@ -10,14 +10,16 @@ export function useStores() {
 const isServer = !process.browser;
 useStaticRendering(isServer);
 
-/** import all subStore */
-import RootPageStore from "@containers/RootPage/store/RootPageStore";
 
 class Store {
   constructor(isServer, initialData = {}) {
     const ctx = isServer ? {} : this;
     this.isServer = isServer;
-    this.RootPageStore = new RootPageStore({ ctx, initialData, storeName: "RootPageStore" });
+    for (const k in allStore) {
+      if (allStore.hasOwnProperty(k)) {
+        this[k] = new allStore[k]({ ctx, isServer, initialData: initialData[k], storeName: "RootPageStore" })
+      }
+    }
   }
 }
 
