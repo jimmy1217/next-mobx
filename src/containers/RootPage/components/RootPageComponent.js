@@ -46,7 +46,6 @@ const RootPage = () => {
   const { list } = RootPageStore;
   return (
     <Contain>
-      {count}
       {!toggle && (
         <div {...morph}>
           <Reset
