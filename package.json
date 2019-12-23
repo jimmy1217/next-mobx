@@ -12,7 +12,6 @@
     "analyze": "BUNDLE_ANALYZE=both next build",
     "analyze:server": "BUNDLE_ANALYZE=server next build",
     "analyze:browser": "BUNDLE_ANALYZE=browser next build"
-
   },
   "repository": {
     "type": "git",
@@ -25,6 +24,8 @@
   },
   "homepage": "https://github.com/jimmy1217/next-mobx#readme",
   "dependencies": {
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.7.4",
+    "@babel/plugin-proposal-optional-chaining": "^7.7.5",
     "@zeit/next-bundle-analyzer": "^0.1.2",
     "axios": "^0.19.0",
     "dotenv": "^8.1.0",
