@@ -61,8 +61,8 @@ const RootPage = () => {
       {toggle && (
         <div {...morph}>
           {list?.map(item => (
-            <Card key={item?.id}>
-              <h6>{item?.username}</h6>
+            <Card key={item.id}>
+              <h6>{item.username}</h6>
             </Card>
           ))}
           <Reset
