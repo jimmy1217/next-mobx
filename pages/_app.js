@@ -8,8 +8,18 @@ import { normalize } from "styled-normalize";
 
 const GlobalStyle = createGlobalStyle`
   ${normalize}
+  html, body {
+    height: 100%;
+  }
   body {
     background-color: rgb(43, 40, 50);
+  }
+  input {
+    border:0;
+    padding:0;
+  }
+  body > div {
+    height:100%;
   }
 `;
 

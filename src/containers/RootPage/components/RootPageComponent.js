@@ -1,8 +1,45 @@
-import React, { useState, useEffect } from "react";
-import { observer, Observer, useLocalStore } from "mobx-react";
+import React, { useState } from "react";
+import { observer } from "mobx-react";
 import styled from "styled-components";
 import { useMorph } from "react-morph";
 import { useStores } from "@store/store"
+
+const ResetComponent = ({ onClick }) => (
+  <Reset onClick={onClick}>
+    reset value
+  </Reset>
+)
+
+const RootPage = () => {
+  const [toggle, setToggle] = useState(true);
+  const morph = useMorph();
+  const RootPageStore = useStores().store.RootPageStore;
+  const { list } = RootPageStore;
+  const toggleClick = () => {
+    setToggle(!toggle);
+  };
+
+  return (
+    <Contain>
+      {!toggle && (
+        <div {...morph}>
+          <ResetComponent onClick={toggleClick} />
+        </div>
+      )}
+
+      {toggle && (
+        <div {...morph}>
+          {list?.map(item => (
+            <Card key={item.id}>
+              <h6>{item.username}</h6>
+            </Card>
+          ))}
+          <ResetComponent onClick={toggleClick} />
+        </div>
+      )}
+    </Contain>
+  )
+};
 
 const Contain = styled.div`
   display: flex;
@@ -29,53 +66,5 @@ const Reset = styled.div`
   padding: 20px 0;
   background-color: transparent;
 `;
-
-
-const RootPage = () => {
-  const [toggle, setToggle] = useState(true);
-
-  useEffect(() => {
-    console.log('component did mount')
-    return () => {
-      console.log('component will unmount')
-    };
-  }, []);
-
-  const morph = useMorph();
-  const RootPageStore = useStores().store.RootPageStore;
-  const { list } = RootPageStore;
-  return (
-    <Contain>
-      {!toggle && (
-        <div {...morph}>
-          <Reset
-            onClick={() => {
-              setToggle(!toggle);
-            }}
-          >
-            reset value
-          </Reset>
-        </div>
-      )}
-
-      {toggle && (
-        <div {...morph}>
-          {list?.map(item => (
-            <Card key={item.id}>
-              <h6>{item.username}</h6>
-            </Card>
-          ))}
-          <Reset
-            onClick={() => {
-              setToggle(!toggle);
-            }}
-          >
-            reset value
-          </Reset>
-        </div>
-      )}
-    </Contain>
-  )
-};
 
 export default observer(RootPage);
