@@ -17,7 +17,7 @@ class Store {
     this.isServer = isServer;
     for (const k in allStore) {
       if (allStore.hasOwnProperty(k)) {
-        this[k] = new allStore[k]({ ctx, isServer, initialData: initialData[k], storeName: "RootPageStore" })
+        this[k] = new allStore[k]({ ctx, isServer, initialData: initialData[k] })
       }
     }
   }
