@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
   ${normalize}
   * {
     box-sizing: border-box;
+    font-family: 'Noto Sans TC', sans-serif;
   }
   html, body {
     height: 100%;
