@@ -48,12 +48,12 @@ const LoginWrapper = styled.div`
     padding: 120px 20px 20px 20px;
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.9);
-    transition: all 0.5s cubic-bezier(.16,1.3,0,1.01) 0.25s;
+    transition: all 0.5s cubic-bezier(0.16, 1.3, 0, 1.01) 0.25s;
     &.login {
       max-width: 100%;
       height: 100%;
       background-color: #fff;
-      border-radius:0;
+      border-radius: 0;
     }
   }
   .top_card {
@@ -78,7 +78,7 @@ const LoginWrapper = styled.div`
       top: 0;
       left: 0;
       transform: translate3d(0, 0, 0);
-      border-radius:0;
+      border-radius: 0;
     }
   }
   .text-field + .text-field {
