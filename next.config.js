@@ -1,30 +1,32 @@
+const withPlugins = require('next-compose-plugins');
 const withBundleAnalyzer = require('@zeit/next-bundle-analyzer')
-const withOptimizedImages = require('next-optimized-images');
+const optimizedImages = require('next-optimized-images');
 
-const nextConfig = {
-  /** next-optimized-images config */
-  inlineImageLimit: 8192,
-  imagesFolder: 'images',
-  imagesName: '[name]-[hash].[ext]',
-  handleImages: ['png','jpg'],
-  optimizeImagesInDev: true,
-  
-  /** next-bundle-analyzer config */
-  analyzeServer: ['server', 'both'].includes(process.env.BUNDLE_ANALYZE),
-  analyzeBrowser: ['browser', 'both'].includes(process.env.BUNDLE_ANALYZE),
-  bundleAnalyzerConfig: {
-    server: {
-      analyzerMode: 'static',
-      reportFilename: '../bundles/server.html'
-    },
-    browser: {
-      analyzerMode: 'static',
-      reportFilename: '../bundles/client.html'
+module.exports = withPlugins([
+  [optimizedImages, {
+    inlineImageLimit: 8192,
+    imagesFolder: 'images',
+    imagesName: '[name]-[hash].[ext]',
+    handleImages: ['png', 'jpg'],
+    optimizeImagesInDev: true,
+    pngquant:{
+      speed:10
     }
-  },
-  webpack (config) {
-    return config
-  }
-}
-
-module.exports = withBundleAnalyzer(withOptimizedImages(nextConfig))
+    
+    /* config for next-optimized-images */
+  }],
+  [withBundleAnalyzer, {
+    analyzeServer: ['server', 'both'].includes(process.env.BUNDLE_ANALYZE),
+    analyzeBrowser: ['browser', 'both'].includes(process.env.BUNDLE_ANALYZE),
+    bundleAnalyzerConfig: {
+      server: {
+        analyzerMode: 'static',
+        reportFilename: '../bundles/server.html'
+      },
+      browser: {
+        analyzerMode: 'static',
+        reportFilename: '../bundles/client.html'
+      }
+    }
+  }]
+]);
