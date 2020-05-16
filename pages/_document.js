@@ -1,6 +1,10 @@
 import Document, { Head, Main, NextScript } from "next/document";
 import { ServerStyleSheet } from "styled-components";
 
+const Script = ({ children }) => (
+  <script dangerouslySetInnerHTML={{ __html: `(${children.toString()})();` }}></script>
+);
+
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
     const sheet = new ServerStyleSheet();
@@ -25,6 +29,15 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          <Script>
+            {
+              () => {
+                (function () {
+                  window.__REACT_DEVTOOLS_GLOBAL_HOOK__.inject = function () { }
+                })();
+              }
+            }
+          </Script>
         </body>
       </html>
     );

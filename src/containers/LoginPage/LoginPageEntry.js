@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import { useLocalStore, useObserver } from "mobx-react";
 
+// import loginBackground from 'static/images/bg.jpg';
+// const loginBackground = require('static/images/bg.jpg');
+
 export default () => {
   const store = useLocalStore(() => ({
     isLogin: false,
@@ -57,7 +60,7 @@ const LoginWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url("static/images/bg.jpg");
+  /* background-image: loginBackground; */
   background-size: cover;
   background-position: 0 75%;
   .login_container {

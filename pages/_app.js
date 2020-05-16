@@ -40,24 +40,24 @@ const MainContainer = styled.div`
 `
 
 class MyMobxApp extends App {
-  static async getInitialProps(appContext) {
-    const mobxStore = initializeStore();
-    appContext.ctx.mobxStore = mobxStore;
-    let appProps = await App.getInitialProps(appContext);
+  // static async getInitialProps(appContext) {
+  //   const mobxStore = initializeStore();
+  //   appContext.ctx.mobxStore = mobxStore;
+  //   let appProps = await App.getInitialProps(appContext);
 
-    return {
-      ...appProps,
-      initialMobxState: mobxStore
-    };
-  }
+  //   return {
+  //     ...appProps,
+  //     initialMobxState: mobxStore
+  //   };
+  // }
 
-  constructor(props) {
-    super(props);
-    const isServer = !process.browser;
-    this.mobxStore = isServer
-      ? props.initialMobxState
-      : initializeStore(props.initialMobxState);
-  }
+  // constructor(props) {
+    // super(props);
+    // const isServer = !process.browser;
+    // this.mobxStore = isServer
+    //   ? props.initialMobxState
+    //   : initializeStore(props.initialMobxState);
+  // }
 
   render() {
     const { Component, pageProps } = this.props;
@@ -67,9 +67,10 @@ class MyMobxApp extends App {
           <title>next Mobx</title>
         </Head>
         <GlobalStyle />
-        <Provider store={this.mobxStore}>
+        <Component {...pageProps} />
+        {/* <Provider store={this.mobxStore}>
           <Component {...pageProps} />
-        </Provider>
+        </Provider> */}
       </MainContainer>
     );
   }
