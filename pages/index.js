@@ -1,1 +1,1 @@
-export { default } from "@containers/RootPage";
+export { default } from "@containers/LoginPage";
