@@ -63,8 +63,8 @@ const LoginWrapper = styled.div`
   .login_container {
     position: relative;
     max-width: 350px;
-    min-height: 500px;
-    height: 500px;
+    min-height: 320px;
+    height: 320px;
     width: 100%;
     padding: 120px 20px 20px 20px;
     border-radius: 10px;
