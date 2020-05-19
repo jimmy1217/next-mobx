@@ -2,36 +2,51 @@ import styled from "styled-components";
 import { useLocalStore, useObserver } from "mobx-react";
 import { useEffect } from 'react';
 import loginBackground from '@static/images/bg.jpg?lqip';
+import { useStore } from '@store'
+import { inject, observer } from 'mobx-react'
 
-export default () => {
-  const store = useLocalStore(() => ({
-    isLogin: false,
-    account: "",
-    password: "",
-    imgDidLoad: false,
-    toggleLogin() {
-      store.isLogin = !store.isLogin;
-    },
-    onChangeStore(e) {
-      store[e.target.name] = e.target.value;
-    },
-    checkImgLoad() {
-      var img = new Image();
-      img.onload = function () {
-        store.imgDidLoad = true;
-      };
-      img.src = loginBackground.src;
-    }
-  }));
-  useEffect(() => {
-    store.checkImgLoad()
-    // componentDidMount is here!
-  }, [])
+export default inject('store')(observer((props) => {
+  const { store } = props
+  console.log(store)
+  const { lastUpdate } = store;
+  // const RootPageStore = useStores().store.RootPageStore;
+
+  // const store = useLocalStore(() => ({
+  //   isLogin: false,
+  //   account: "",
+  //   password: "",
+  //   imgDidLoad: false,
+  //   toggleLogin() {
+  //     store.isLogin = !store.isLogin;
+  //   },
+  //   onChangeStore(e) {
+  //     action(function(){
+  //       this[e.target.name] = e.target.value;
+  //     })
+  //   },
+  //   setImgDidLoad() {
+  //     store.imgDidLoad = true;
+  //   },
+  //   checkImgLoad() {
+  //     var img = new Image();
+  //     img.onload = action(function () {
+  //       this.setImgDidLoad()
+  //       console.log(this)
+  //     }.bind(this));
+  //     img.src = loginBackground.src;
+  //   }
+  // }));
+  // useEffect(() => {
+  // store.checkImgLoad()
+  // componentDidMount is here!
+  // }, [])
   return useObserver(() => {
-    const { isLogin, account, password, toggleLogin, onChangeStore, imgDidLoad } = store;
+    // const { isLogin, account, password, toggleLogin, onChangeStore, imgDidLoad } = store;
+    const imgDidLoad = false;
     return (
       <LoginWrapper img={!imgDidLoad ? loginBackground.preSrc : loginBackground.src}>
-        <div className={`nav_container ${isLogin ? "login" : ""}`}></div>
+        {lastUpdate}
+        {/* <div className={`nav_container ${isLogin ? "login" : ""}`}></div>
         <div className={`login_container ${isLogin ? "login" : ""}`}>
           <div className={`top_card ${isLogin ? "fixed_top" : ""}`}>
             <h4>Login</h4>
@@ -58,11 +73,11 @@ export default () => {
             Submit
           </div>
 
-        </div>
+        </div> */}
       </LoginWrapper>
     );
   });
-};
+}))
 
 const LoginWrapper = styled.div`
   height: 100%;
