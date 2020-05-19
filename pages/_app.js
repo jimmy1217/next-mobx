@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }) {
         <title>next Mobx</title>
       </Head>
       <GlobalStyle />
-      <Provider store={store}>
+      <Provider rootStore={store}>
         <Component {...pageProps} />
       </Provider>
     </MainContainer>

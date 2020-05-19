@@ -5,10 +5,10 @@ import loginBackground from '@static/images/bg.jpg?lqip';
 import { useStore } from '@store'
 import { inject, observer } from 'mobx-react'
 
-export default inject('store')(observer((props) => {
-  const { store } = props
-  console.log(store)
-  const { lastUpdate } = store;
+export default inject('rootStore')(observer((props) => {
+  const { rootStore } = props
+  console.log(rootStore)
+  const { lastUpdate } = rootStore.loginStore;
   // const RootPageStore = useStores().store.RootPageStore;
 
   // const store = useLocalStore(() => ({

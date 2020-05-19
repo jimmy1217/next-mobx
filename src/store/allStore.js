@@ -1,8 +1,6 @@
 /** import all subStore */
-import RootPageStore from "@containers/RootPage/store/RootPageStore";
+import LoginStore from "@containers/LoginPage/store/LoginStore";
 
-const allStore = {
-    RootPageStore
+export {
+    LoginStore
 }
-
-export default allStore
