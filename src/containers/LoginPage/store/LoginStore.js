@@ -15,12 +15,5 @@ export default class LoginStore extends storeAction {
         this.initState = this.returnCombineState(props, initState);
         extendObservable(this, this.initState);
     }
-    // @action hydrate = initialData => {
-    //     if (!initialData) return
-
-
-    //     this.lastUpdate = initialData.lastUpdate !== null ? initialData.lastUpdate : Date.now()
-    //     this.light = !!initialData.light
-    // }
 }
 

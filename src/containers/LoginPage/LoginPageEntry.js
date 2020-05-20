@@ -7,7 +7,6 @@ import { inject, observer } from 'mobx-react'
 
 export default inject('rootStore')(observer((props) => {
   const { rootStore } = props
-  console.log(rootStore)
   const { lastUpdate } = rootStore.loginStore;
   // const RootPageStore = useStores().store.RootPageStore;
 

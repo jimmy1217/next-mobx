@@ -7,8 +7,9 @@ export default class storeAction {
   }
 
   @action returnCombineState = (props, initState) => {
-    const { isServer, initialData } = props;
-    const combineClientServerState = { ...initState, ...initialData };
+    const { isServer, initialData, storeName } = props;
+    const serverSideInitialState = initialData && initialData[storeName] ? initialData[storeName] : {};
+    const combineClientServerState = { ...initState, ...serverSideInitialState };
     delete combineClientServerState.initState;
     return combineClientServerState
   }

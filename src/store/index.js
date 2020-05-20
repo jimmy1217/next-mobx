@@ -1,15 +1,23 @@
 import { action, observable, computed, runInAction } from 'mobx'
 import { useStaticRendering } from 'mobx-react'
 import { useMemo } from 'react'
-import { LoginStore } from './allStore'
 const isServer = typeof window === 'undefined';
+import { configure } from "mobx"
+
+/** import all store */
+import LoginStore from "@containers/LoginPage/store/LoginStore";
+
+
 
 useStaticRendering(isServer)
+configure({ enforceActions: "observed" })
+
 let store
 
 class Store {
     constructor(initialData) {
-        this.loginStore = new LoginStore({ ctx: isServer ? undefined : this, isServer, initialData })
+        const ctx = isServer ? undefined : this;
+        this.loginStore = new LoginStore({ storeName: 'loginStore', ctx, isServer, initialData })
     }
 
     /** 此處處理 server side 同步 client side store */
