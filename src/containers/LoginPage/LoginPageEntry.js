@@ -2,23 +2,26 @@ import styled from "styled-components";
 import { useObserver } from "mobx-react";
 import { useEffect } from 'react';
 import { useStore } from '@store'
+import { useRouter } from 'next/router'
 import loginBackground from '@static/images/bg.jpg?lqip';
 
+
 export default ({ initialState }) => {
+  const route = useRouter();
   const { loginStore } = useStore(initialState);
   useEffect(() => {
     loginStore.checkImgLoad(loginBackground.src)
     // componentDidMount is here!
   }, [])
   return useObserver(() => {
-    const { isLogin, account, password, toggleLogin, onChangeStore, imgDidLoad, onSubmit } = loginStore;
+    const { isLogin, account, password, onChangeStore, imgDidLoad, onSubmit } = loginStore;
     return (
       <LoginWrapper img={!imgDidLoad ? loginBackground.preSrc : loginBackground.src}>
         <div className={`nav_container ${isLogin ? "login" : ""}`}></div>
         <div className={`login_container ${isLogin ? "login" : ""}`}>
           <form onSubmit={onSubmit}>
             <div className={`top_card ${isLogin ? "fixed_top" : ""}`}>
-              <h4>Login</h4>
+              <h4 name="login">Login</h4>
             </div>
             <div className="text-field">
               <input
@@ -38,7 +41,12 @@ export default ({ initialState }) => {
                 onChange={onChangeStore}
               />
             </div>
-            <div className="text-field btn" onClick={toggleLogin}>
+            <div className="text-field btn" onClick={(e) => {
+              onSubmit(e)
+              setTimeout(() => {
+                route.push('/system')
+              }, 1000)
+            }}>
               Submit
             </div>
             <button type="submit" className="hidden"></button>

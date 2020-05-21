@@ -41,8 +41,10 @@ export default class LoginStore extends storeAction {
     }
 
     @action onSubmit = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
         this.toggleLogin()
     }
 }
