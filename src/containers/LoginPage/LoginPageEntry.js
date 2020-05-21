@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { useObserver } from "mobx-react";
 import { useEffect } from 'react';
-import loginBackground from '@static/images/bg.jpg?lqip';
 import { useStore } from '@store'
+import loginBackground from '@static/images/bg.jpg?lqip';
 
 export default ({ initialState }) => {
   const { loginStore } = useStore(initialState);
@@ -11,36 +11,38 @@ export default ({ initialState }) => {
     // componentDidMount is here!
   }, [])
   return useObserver(() => {
-    const { isLogin, account, password, toggleLogin, onChangeStore, imgDidLoad } = loginStore;
+    const { isLogin, account, password, toggleLogin, onChangeStore, imgDidLoad, onSubmit } = loginStore;
     return (
       <LoginWrapper img={!imgDidLoad ? loginBackground.preSrc : loginBackground.src}>
         <div className={`nav_container ${isLogin ? "login" : ""}`}></div>
         <div className={`login_container ${isLogin ? "login" : ""}`}>
-          <div className={`top_card ${isLogin ? "fixed_top" : ""}`}>
-            <h4>Login</h4>
-          </div>
-          <div className="text-field">
-            <input
-              type="text"
-              name="account"
-              value={account}
-              placeholder="ex:jimmy"
-              onChange={onChangeStore}
-            />
-          </div>
-          <div className="text-field">
-            <input
-              type="password"
-              name="password"
-              placeholder="ex:123456"
-              value={password}
-              onChange={onChangeStore}
-            />
-          </div>
-          <div className="text-field btn" onClick={loginStore.toggleLogin}>
-            Submit
-          </div>
-
+          <form onSubmit={onSubmit}>
+            <div className={`top_card ${isLogin ? "fixed_top" : ""}`}>
+              <h4>Login</h4>
+            </div>
+            <div className="text-field">
+              <input
+                type="text"
+                name="account"
+                value={account}
+                placeholder="ex:jimmy"
+                onChange={onChangeStore}
+              />
+            </div>
+            <div className="text-field">
+              <input
+                type="password"
+                name="password"
+                placeholder="ex:123456"
+                value={password}
+                onChange={onChangeStore}
+              />
+            </div>
+            <div className="text-field btn" onClick={toggleLogin}>
+              Submit
+            </div>
+            <button type="submit" className="hidden"></button>
+          </form>
         </div>
       </LoginWrapper>
     );

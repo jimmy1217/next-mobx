@@ -28,6 +28,10 @@ input:focus {
 body > div {
   height:100%;
 }
+
+.hidden {
+    display:none;
+}
 `;
 
 const MainContainer = styled.div`
@@ -35,5 +39,5 @@ height:100%;
 `
 
 export {
-    GlobalStyle,MainContainer
+    GlobalStyle, MainContainer
 }

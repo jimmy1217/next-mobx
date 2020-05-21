@@ -31,13 +31,19 @@ export default class LoginStore extends storeAction {
             imgDidLoad: true
         })
     }
-    
+
     @action checkImgLoad = (imgSrc) => {
         var img = new Image();
         img.onload = action(function () {
             this.setImgDidLoad()
         }.bind(this));
         img.src = imgSrc;
+    }
+
+    @action onSubmit = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        this.toggleLogin()
     }
 }
 
