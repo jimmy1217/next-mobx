@@ -66,6 +66,7 @@ const LoginWrapper = styled.div`
     padding: 120px 20px 20px 20px;
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.9);
+    will-change:max-width, height;
     transition: all 0.6s cubic-bezier(0.16, 1.3, 0, 1.01) 0.25s;
     &.login {
       max-width: 100%;
@@ -104,6 +105,7 @@ const LoginWrapper = styled.div`
     transition: all 0.3s ease;
     box-shadow: 0 12px 20px -10px rgba(115, 115, 115, 0.28),
       0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(208, 208, 208, 0.2);
+    will-change:width, height;
     h4 {
       letter-spacing: 3px;
       font-weight: 300;
