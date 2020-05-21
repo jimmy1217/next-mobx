@@ -7,18 +7,19 @@ export default class storeAction {
   }
 
   @action returnCombineState = (props, initState) => {
-    const { isServer, initialData } = props;
-    const combineClientServerState = isServer ? initState : { ...initState, ...initialData };
+    const { isServer, initialData, storeName } = props;
+    const serverSideInitialState = initialData && initialData[storeName] ? initialData[storeName] : {};
+    const combineClientServerState = { ...initState, ...serverSideInitialState };
     delete combineClientServerState.initState;
     return combineClientServerState
   }
 
-  /** action - 多項改變  */
-  @action assignData = (obj, validKey) => {
+  /** action - set store  */
+  @action assignData = obj => {
     Object.assign(this, obj);
   };
 
-  /** action - params 多項改變 */
+  /** action - set params  */
   @action paramsAssign = obj => {
     const params = { ...this.params, ...obj };
     this.assignData({ params });

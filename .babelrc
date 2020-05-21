@@ -18,7 +18,8 @@
           "@storeAction":"./src/store/storeAction",
           "@components":"./src/components",
           "@api":"./src/api",
-          "@static": "./static"
+          "@static": "./static",
+          "@css":"./src/css"
         }
       }],
       ["@babel/plugin-proposal-decorators", { "legacy": true }],

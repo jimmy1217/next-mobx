@@ -1,34 +1,17 @@
 import styled from "styled-components";
-import { useLocalStore, useObserver } from "mobx-react";
+import { useObserver } from "mobx-react";
 import { useEffect } from 'react';
 import loginBackground from '@static/images/bg.jpg?lqip';
+import { useStore } from '@store'
 
-export default () => {
-  const store = useLocalStore(() => ({
-    isLogin: false,
-    account: "",
-    password: "",
-    imgDidLoad: false,
-    toggleLogin() {
-      store.isLogin = !store.isLogin;
-    },
-    onChangeStore(e) {
-      store[e.target.name] = e.target.value;
-    },
-    checkImgLoad() {
-      var img = new Image();
-      img.onload = function () {
-        store.imgDidLoad = true;
-      };
-      img.src = loginBackground.src;
-    }
-  }));
+export default ({ initialState }) => {
+  const { loginStore } = useStore(initialState);
   useEffect(() => {
-    store.checkImgLoad()
+    loginStore.checkImgLoad(loginBackground.src)
     // componentDidMount is here!
   }, [])
   return useObserver(() => {
-    const { isLogin, account, password, toggleLogin, onChangeStore, imgDidLoad } = store;
+    const { isLogin, account, password, toggleLogin, onChangeStore, imgDidLoad } = loginStore;
     return (
       <LoginWrapper img={!imgDidLoad ? loginBackground.preSrc : loginBackground.src}>
         <div className={`nav_container ${isLogin ? "login" : ""}`}></div>
@@ -54,7 +37,7 @@ export default () => {
               onChange={onChangeStore}
             />
           </div>
-          <div className="text-field btn" onClick={store.toggleLogin}>
+          <div className="text-field btn" onClick={loginStore.toggleLogin}>
             Submit
           </div>
 
@@ -62,7 +45,7 @@ export default () => {
       </LoginWrapper>
     );
   });
-};
+}
 
 const LoginWrapper = styled.div`
   height: 100%;
