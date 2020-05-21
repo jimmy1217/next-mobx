@@ -1,51 +1,20 @@
 import styled from "styled-components";
-import { useLocalStore, useObserver } from "mobx-react";
+import { useObserver } from "mobx-react";
 import { useEffect } from 'react';
 import loginBackground from '@static/images/bg.jpg?lqip';
 import { useStore } from '@store'
-import { inject, observer } from 'mobx-react'
 
-export default inject('rootStore')(observer((props) => {
-  const { rootStore } = props
-  const { lastUpdate } = rootStore.loginStore;
-  // const RootPageStore = useStores().store.RootPageStore;
-
-  // const store = useLocalStore(() => ({
-  //   isLogin: false,
-  //   account: "",
-  //   password: "",
-  //   imgDidLoad: false,
-  //   toggleLogin() {
-  //     store.isLogin = !store.isLogin;
-  //   },
-  //   onChangeStore(e) {
-  //     action(function(){
-  //       this[e.target.name] = e.target.value;
-  //     })
-  //   },
-  //   setImgDidLoad() {
-  //     store.imgDidLoad = true;
-  //   },
-  //   checkImgLoad() {
-  //     var img = new Image();
-  //     img.onload = action(function () {
-  //       this.setImgDidLoad()
-  //       console.log(this)
-  //     }.bind(this));
-  //     img.src = loginBackground.src;
-  //   }
-  // }));
-  // useEffect(() => {
-  // store.checkImgLoad()
-  // componentDidMount is here!
-  // }, [])
+export default ({ initialState }) => {
+  const { loginStore } = useStore(initialState);
+  useEffect(() => {
+    loginStore.checkImgLoad(loginBackground.src)
+    // componentDidMount is here!
+  }, [])
   return useObserver(() => {
-    // const { isLogin, account, password, toggleLogin, onChangeStore, imgDidLoad } = store;
-    const imgDidLoad = false;
+    const { isLogin, account, password, toggleLogin, onChangeStore, imgDidLoad } = loginStore;
     return (
       <LoginWrapper img={!imgDidLoad ? loginBackground.preSrc : loginBackground.src}>
-        {lastUpdate}
-        {/* <div className={`nav_container ${isLogin ? "login" : ""}`}></div>
+        <div className={`nav_container ${isLogin ? "login" : ""}`}></div>
         <div className={`login_container ${isLogin ? "login" : ""}`}>
           <div className={`top_card ${isLogin ? "fixed_top" : ""}`}>
             <h4>Login</h4>
@@ -68,15 +37,15 @@ export default inject('rootStore')(observer((props) => {
               onChange={onChangeStore}
             />
           </div>
-          <div className="text-field btn" onClick={store.toggleLogin}>
+          <div className="text-field btn" onClick={loginStore.toggleLogin}>
             Submit
           </div>
 
-        </div> */}
+        </div>
       </LoginWrapper>
     );
   });
-}))
+}
 
 const LoginWrapper = styled.div`
   height: 100%;

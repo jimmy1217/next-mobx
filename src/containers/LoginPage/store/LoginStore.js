@@ -15,5 +15,29 @@ export default class LoginStore extends storeAction {
         this.initState = this.returnCombineState(props, initState);
         extendObservable(this, this.initState);
     }
+
+    @action toggleLogin = () => {
+        this.assignData({ isLogin: !this.isLogin })
+    }
+
+    @action onChangeStore = (e) => {
+        this.assignData({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    @action setImgDidLoad = () => {
+        this.assignData({
+            imgDidLoad: true
+        })
+    }
+    
+    @action checkImgLoad = (imgSrc) => {
+        var img = new Image();
+        img.onload = action(function () {
+            this.setImgDidLoad()
+        }.bind(this));
+        img.src = imgSrc;
+    }
 }
 
