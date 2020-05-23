@@ -8,9 +8,13 @@ const Script = ({ children }) => (
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
     const sheet = new ServerStyleSheet();
-    const page = renderPage(App => props =>
-      sheet.collectStyles(<App {...props} />)
-    );
+    const page = renderPage(App => props => {
+      /** 自定義 document 時, getLayout 這邊要處理 */
+      const getLayout = App.getLayout || (page => page)
+      return (
+        sheet.collectStyles(getLayout(<App {...props} />))
+      )
+    });
     const styleTags = sheet.getStyleElement();
     return { ...page, styleTags };
   }
