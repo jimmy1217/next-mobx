@@ -4,9 +4,9 @@ import { useEffect } from 'react';
 import { useStore } from '@store'
 import { useRouter } from 'next/router'
 import loginBackground from '@static/images/bg.jpg?lqip';
+import { getLayout } from '@layouts';
 
-
-export default ({ initialState }) => {
+function LoginPageEntry({ initialState }) {
   const route = useRouter();
   const { loginStore } = useStore(initialState);
   useEffect(() => {
@@ -56,6 +56,9 @@ export default ({ initialState }) => {
     );
   });
 }
+
+LoginPageEntry.getLayout = getLayout
+export default LoginPageEntry;
 
 const LoginWrapper = styled.div`
   height: 100%;

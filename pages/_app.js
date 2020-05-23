@@ -9,6 +9,7 @@ import {
 
 function MyApp({ Component, pageProps }) {
   const store = useStore(pageProps.initialState)
+  const getLayout = Component.getLayout || (page => page)
   return (
     <MainContainer>
       <Head>
@@ -16,7 +17,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <GlobalStyle />
       <Provider rootStore={store}>
-        <Component {...pageProps} />
+        {getLayout(<Component {...pageProps} />)}
       </Provider>
     </MainContainer>
   )

@@ -19,7 +19,8 @@
           "@components":"./src/components",
           "@api":"./src/api",
           "@static": "./static",
-          "@css":"./src/css"
+          "@css":"./src/css",
+          "@layouts":"./src/layouts"
         }
       }],
       ["@babel/plugin-proposal-decorators", { "legacy": true }],

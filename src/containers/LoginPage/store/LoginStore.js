@@ -45,7 +45,7 @@ export default class LoginStore extends storeAction {
             e.preventDefault();
             e.stopPropagation();
         }
-        this.toggleLogin()
+        this.assignData({ isLogin: true })
     }
 }
 
