@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 import { useStore } from '@store'
 import { useRouter } from 'next/router'
 import loginBackground from '@static/images/bg.jpg?lqip';
-import { getLayout } from '@layouts';
 
 function LoginPageEntry({ initialState }) {
   const route = useRouter();
@@ -45,7 +44,7 @@ function LoginPageEntry({ initialState }) {
               onSubmit(e)
               setTimeout(() => {
                 route.push('/system')
-              }, 1000)
+              }, 800)
             }}>
               Submit
             </div>
@@ -57,7 +56,6 @@ function LoginPageEntry({ initialState }) {
   });
 }
 
-LoginPageEntry.getLayout = getLayout
 export default LoginPageEntry;
 
 const LoginWrapper = styled.div`

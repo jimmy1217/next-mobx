@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import { useTrail, animated } from 'react-spring'
 import { useRouter } from 'next/router'
 import { useStore } from '@store'
+import { getLayout } from '@layouts';
 
 const items = ['Lorem', 'ipsum', 'dolor', 'sit']
 const config = { mass: 5, tension: 1000, friction: 100 }
 
-export default function System({ initialState }) {
+const System = ({ initialState }) => {
     const route = useRouter();
     const { loginStore } = useStore(initialState);
     const [toggle, set] = useState(true)
@@ -42,4 +43,5 @@ export default function System({ initialState }) {
     )
 }
 
-
+System.getLayout = getLayout
+export default System

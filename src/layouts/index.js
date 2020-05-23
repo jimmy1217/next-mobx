@@ -1,7 +1,7 @@
 const SiteLayout = ({ children }) => {
-    console.log('layout render')
     return (
         <div>
+            <h1>123</h1>
             {children}
         </div>
     )
