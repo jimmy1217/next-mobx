@@ -44,8 +44,11 @@ function initializeStore(initialData = null) {
 
     return _store
 }
-
+let defaultInitialState
 export function useStore(initialState) {
-    const store = useMemo(() => initializeStore(initialState), [initialState])
+    if(initialState){
+        defaultInitialState = initialState
+    }
+    const store = useMemo(() => initializeStore(defaultInitialState), [defaultInitialState])
     return store
 }

@@ -2,54 +2,23 @@ import styled from "styled-components";
 import { useObserver } from "mobx-react";
 import { useEffect } from 'react';
 import { useStore } from '@store'
-import { useRouter } from 'next/router'
+
 import loginBackground from '@static/images/bg.jpg?lqip';
+import LoginForm from './components/LoginForm';
 
 function LoginPageEntry({ initialState }) {
-  const route = useRouter();
   const { loginStore } = useStore(initialState);
   useEffect(() => {
     loginStore.checkImgLoad(loginBackground.src)
     // componentDidMount is here!
   }, [])
   return useObserver(() => {
-    const { isLogin, account, password, onChangeStore, imgDidLoad, onSubmit } = loginStore;
+    const { isLogin, imgDidLoad } = loginStore;
     return (
       <LoginWrapper img={!imgDidLoad ? loginBackground.preSrc : loginBackground.src}>
         <div className={`nav_container ${isLogin ? "login" : ""}`}></div>
         <div className={`login_container ${isLogin ? "login" : ""}`}>
-          <form onSubmit={onSubmit}>
-            <div className={`top_card ${isLogin ? "fixed_top" : ""}`}>
-              <h4 name="login">Login</h4>
-            </div>
-            <div className="text-field">
-              <input
-                type="text"
-                name="account"
-                value={account}
-                placeholder="ex:jimmy"
-                onChange={onChangeStore}
-              />
-            </div>
-            <div className="text-field">
-              <input
-                type="password"
-                name="password"
-                placeholder="ex:123456"
-                value={password}
-                onChange={onChangeStore}
-              />
-            </div>
-            <div className="text-field btn" onClick={(e) => {
-              onSubmit(e)
-              setTimeout(() => {
-                route.push('/system')
-              }, 800)
-            }}>
-              Submit
-            </div>
-            <button type="submit" className="hidden"></button>
-          </form>
+          <LoginForm />
         </div>
       </LoginWrapper>
     );
