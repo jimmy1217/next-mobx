@@ -16,8 +16,8 @@ function LoginPageEntry({ initialState }) {
     const { isLogin, imgDidLoad } = loginStore;
     return (
       <LoginWrapper img={!imgDidLoad ? loginBackground.preSrc : loginBackground.src}>
-        <div className={`nav_container ${isLogin ? "login" : ""}`}></div>
-        <div className={`login_container ${isLogin ? "login" : ""}`}>
+        <div className={`nav_container h-full ${isLogin ? "login" : ""}`}></div>
+        <div className={`login_container relative rounded ${isLogin ? "login" : ""}`}>
           <LoginForm />
         </div>
       </LoginWrapper>
@@ -38,13 +38,12 @@ const LoginWrapper = styled.div`
   background-size: cover;
   background-position: 0 75%;
   .login_container {
-    position: relative;
     max-width: 350px;
     min-height: 320px;
     height: 320px;
     width: 100%;
     padding: 120px 20px 20px 20px;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     background-color: rgba(255, 255, 255, 0.9);
     will-change:max-width, height;
     transition: all 0.6s cubic-bezier(0.16, 1.3, 0, 1.01) 0.25s;
@@ -56,7 +55,6 @@ const LoginWrapper = styled.div`
     }
   }
   .nav_container {
-    height: 100%;
     width: 240px;
     background-color: #252d3a;
     position: absolute;
