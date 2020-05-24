@@ -1,31 +1,43 @@
 {
-    "presets": [
-      "next/babel"
+  "presets": [
+    "next/babel"
+  ],
+  "plugins": [
+    [
+      "babel-plugin-styled-components",
+      {
+        "displayName": true,
+        "ssr": true
+      }
     ],
-
-    "plugins": [
-      [
-        "babel-plugin-styled-components",
-        {
-          "displayName": true,
-          "ssr": true
-        }
-      ],
-      ["module-resolver", {
+    [
+      "module-resolver",
+      {
         "alias": {
           "@containers": "./src/containers",
           "@store": "./src/store",
-          "@storeAction":"./src/store/storeAction",
-          "@components":"./src/components",
-          "@api":"./src/api",
+          "@storeAction": "./src/store/storeAction",
+          "@components": "./src/components",
+          "@api": "./src/api",
           "@static": "./static",
-          "@css":"./src/css",
-          "@layouts":"./src/layouts"
+          "@css": "./src/css",
+          "@layouts": "./src/layouts"
         }
-      }],
-      ["@babel/plugin-proposal-decorators", { "legacy": true }],
-      ["@babel/plugin-proposal-class-properties", { "loose": true }],
-      "@babel/plugin-proposal-optional-chaining",
-      "@babel/plugin-proposal-nullish-coalescing-operator"
-    ]
-  }
+      }
+    ],
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "legacy": true
+      }
+    ],
+    [
+      "@babel/plugin-proposal-class-properties",
+      {
+        "loose": true
+      }
+    ],
+    "@babel/plugin-proposal-optional-chaining",
+    "@babel/plugin-proposal-nullish-coalescing-operator"
+  ]
+}
