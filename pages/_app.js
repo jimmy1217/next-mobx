@@ -3,15 +3,17 @@ import React from "react";
 import Head from "next/head";
 import { useStore } from '@store'
 import { Provider } from 'mobx-react'
+import '@css/tailwind.css'
+
 import {
-  GlobalStyle, MainContainer
+  GlobalStyle
 } from '@css/globalStyle';
 
 function MyApp({ Component, pageProps }) {
   const store = useStore(pageProps.initialState)
   const getLayout = Component.getLayout || (page => page)
   return (
-    <MainContainer>
+    <div className="h-full">
       <Head>
         <title>next Mobx</title>
       </Head>
@@ -19,7 +21,7 @@ function MyApp({ Component, pageProps }) {
       <Provider rootStore={store}>
         {getLayout(<Component {...pageProps} />)}
       </Provider>
-    </MainContainer>
+    </div>
   )
 }
 

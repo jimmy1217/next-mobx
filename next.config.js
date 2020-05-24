@@ -1,6 +1,7 @@
 const withPlugins = require('next-compose-plugins');
 const withBundleAnalyzer = require('@zeit/next-bundle-analyzer')
 const optimizedImages = require('next-optimized-images');
+const withCSS = require('@zeit/next-css')
 
 module.exports = withPlugins([
   [optimizedImages, {
@@ -28,5 +29,6 @@ module.exports = withPlugins([
         reportFilename: '../bundles/client.html'
       }
     }
-  }]
+  }],
+  [withCSS]
 ]);
