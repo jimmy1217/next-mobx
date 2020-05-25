@@ -12,9 +12,27 @@
 .btn {
   @apply font-bold py-2 px-4 rounded text-center;
 }
+
+.btn-gray {
+  @apply bg-gray-500 text-white;
+}
+
+.btn-gray:hover {
+  @apply bg-gray-700;
+}
+
 .btn-blue {
   @apply bg-blue-500 text-white;
 }
+
 .btn-blue:hover {
   @apply bg-blue-700;
+}
+
+.btn-teal {
+  @apply bg-teal-500 text-white;
+}
+
+.btn-teal:hover {
+  @apply bg-teal-700;
 }

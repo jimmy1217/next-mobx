@@ -11,8 +11,8 @@ module.exports = {
     extend: {
       spacing: {
         '2px': '2px',
-      },
-    },
+      }
+    }
   },
   variants: {},
   plugins: [],
