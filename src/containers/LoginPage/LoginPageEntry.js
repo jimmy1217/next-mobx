@@ -81,12 +81,6 @@ const LoginWrapper = styled.div`
     box-shadow: 0 12px 20px -10px rgba(115, 115, 115, 0.28),
       0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(208, 208, 208, 0.2);
     will-change:width, height;
-    h4 {
-      letter-spacing: 3px;
-      font-weight: 300;
-      opacity: 1;
-      transition: opacity 0.8s ease 0.5s;
-    }
     &.fixed_top {
       position: absolute;
       width: 100%;
