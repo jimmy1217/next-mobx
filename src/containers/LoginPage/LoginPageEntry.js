@@ -109,31 +109,12 @@ const LoginWrapper = styled.div`
     margin-top: 10px;
   }
 
-  input {
+  /* input {
     font-size: 16px;
     width: 100%;
     height: 40px;
     line-height: 40px;
     padding: 0 10px;
     border-radius: 5px;
-  }
-  /* .btn {
-    border-radius: 5px;
-    width: 100%;
-    padding: 0;
-    height: 40px;
-    line-height: 40px;
-    background-color: #fff;
-    padding: 0 10px;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    transform: scale(1);
-    &:hover {
-      background-color: #ddd;
-    }
-    &:active {
-      transform: scale(0.9);
-    }
   } */
 `;

@@ -24,6 +24,7 @@ const LoginForm = () => {
                         name="account"
                         value={account}
                         placeholder="ex:jimmy"
+                        className="appearance-none rounded w-full py-2 px-3 text-gray-700 mb-3  focus:outline-none "
                         onChange={onChangeStore}
                     />
                 </div>
@@ -32,6 +33,7 @@ const LoginForm = () => {
                         type="password"
                         name="password"
                         placeholder="ex:123456"
+                        className="appearance-none rounded w-full py-2 px-3 text-gray-700 mb-3  focus:outline-none "
                         value={password}
                         onChange={onChangeStore}
                     />

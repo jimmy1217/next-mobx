@@ -9,6 +9,7 @@ html, body, #__next {
   height:100%;
 }
 `;
+
 export {
   GlobalStyle
 }
