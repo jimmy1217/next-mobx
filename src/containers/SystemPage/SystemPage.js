@@ -34,8 +34,6 @@ const System = ({ initialState }) => {
                         setTimeout(() => {
                             loginStore.assignData({ isLogin: false })
                         }, 0)
-
-                        console.log('then')
                     })
                 }}>go back</div>
             </div>

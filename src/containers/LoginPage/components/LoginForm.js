@@ -38,7 +38,7 @@ const LoginForm = () => {
                         onChange={onChangeStore}
                     />
                 </div>
-                <div className="text-field btn btn-gray" onClick={(e) => {
+                <div className="login_submit text-field btn btn-gray" onClick={(e) => {
                     onSubmit(e)
                     setTimeout(() => {
                         route.push('/system')

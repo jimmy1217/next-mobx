@@ -10,7 +10,6 @@ function LoginPageEntry({ initialState }) {
   const { loginStore } = useStore(initialState);
   useEffect(() => {
     loginStore.checkImgLoad(loginBackground.src)
-    // componentDidMount is here!
   }, [])
   return useObserver(() => {
     const { isLogin, imgDidLoad } = loginStore;
@@ -49,6 +48,12 @@ const LoginWrapper = styled.div`
       height: 100%;
       background-color: #fff;
       border-radius: 0;
+      .login_submit {
+        opacity:0;
+      }
+    }
+    .login_submit {
+        opacity:1;
     }
   }
   .nav_container {
