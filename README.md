@@ -1,3 +1,3 @@
 # next-mobx
 
-next + mobx + tailwind + styled-component + dynamic layouy example
+next + mobx + tailwind + styled-component + dynamic layout example
