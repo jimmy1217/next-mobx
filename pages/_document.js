@@ -24,10 +24,6 @@ export default class MyDocument extends Document {
       <html>
         <Head>
           {this.props.styleTags}
-          <link
-            href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap&subset=chinese-traditional"
-            rel="stylesheet"
-          ></link>
         </Head>
 
         <body>
