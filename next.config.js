@@ -2,6 +2,7 @@ const withPlugins = require('next-compose-plugins');
 const withBundleAnalyzer = require('@zeit/next-bundle-analyzer')
 const optimizedImages = require('next-optimized-images');
 const withCSS = require('@zeit/next-css')
+const withPWA = require('next-pwa')
 
 module.exports = withPlugins([
   [optimizedImages, {
@@ -10,10 +11,10 @@ module.exports = withPlugins([
     imagesName: '[name]-[hash].[ext]',
     handleImages: ['png', 'jpg'],
     optimizeImagesInDev: true,
-    pngquant:{
-      speed:10
+    pngquant: {
+      speed: 10
     }
-    
+
     /* config for next-optimized-images */
   }],
   [withBundleAnalyzer, {
@@ -30,5 +31,10 @@ module.exports = withPlugins([
       }
     }
   }],
-  [withCSS]
+  [withCSS],
+  [withPWA, {
+    pwa: {
+      dest: 'public'
+    }
+  }]
 ]);
