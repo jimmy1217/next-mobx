@@ -14,7 +14,6 @@ module.exports = withPlugins([
     pngquant: {
       speed: 10
     }
-
     /* config for next-optimized-images */
   }],
   [withBundleAnalyzer, {

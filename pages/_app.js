@@ -4,10 +4,7 @@ import Head from "next/head";
 import { useStore } from '@store'
 import { Provider } from 'mobx-react'
 import '@css/tailwind.css'
-
-import {
-  GlobalStyle
-} from '@css/globalStyle';
+import { GlobalStyle } from '@css/globalStyle';
 
 function MyApp({ Component, pageProps }) {
   const store = useStore(pageProps.initialState)

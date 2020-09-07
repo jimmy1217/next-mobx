@@ -16,7 +16,7 @@ const LoginForm = () => {
                 }, 800)
             }}>
                 <div className={`top_card ${isLogin ? "fixed_top" : ""}`}>
-                    <h4 name="login" className="font-light tracking-wider text-xl antialiased">Login</h4>
+                    <h4 name="login" className="font-light tracking-wider text-xl antialiased">Login2</h4>
                 </div>
                 <div className="text-field">
                     <input

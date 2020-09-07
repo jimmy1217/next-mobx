@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
+    "_dev": "next",
+    "dev": "node -r dotenv/config server.js dotenv_config_path=./env/.env",
     "build": "next build",
     "start": "next start",
     "export": "next export",
